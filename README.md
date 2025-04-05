@@ -1,3 +1,3 @@
-# Zenn CLI
+# zenn-content
 
-* [📘 How to use](https://zenn.dev/zenn/articles/zenn-cli-guide)
+Zenn に投稿する記事を管理する repository
