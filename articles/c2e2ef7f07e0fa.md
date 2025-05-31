@@ -35,22 +35,23 @@ Node.js のバージョンアップに伴う環境変数の取り扱いについ
 環境変数の管理方法として、下記のような構成を取る場合、`--env-file` オプションを指定するとクラウド環境でのビルド時にエラーとなってしまいます。
 
 1. 開発者のローカル環境
+
    - `.env` ファイルを作成し、その中で環境変数を管理
 
 2. 本番環境（Vercel, Cloudflare Pages, etc.）
    - `.env` ファイルは使用せず、プラットフォームの管理画面上で環境変数を設定
    - `.env` ファイルは `.vercelignore` や `.gitignore` に含めている
 
-## 解決策: --env-file-if-exist オプションの活用
+## 解決策: --env-file-if-exists オプションの活用
 
-Node.js には `--env-file-if-exist` というオプションも用意されています。
+Node.js には `--env-file-if-exists` というオプションも用意されています。
 このオプションは名前が示す通り、**指定したファイルが存在しない場合でもエラーを発生させず、処理を続行する**という仕様になっています。
 
 ```json
 // package.json の例
 {
   "scripts": {
-    "dev": "node --env-file-if-exist=.env src/index.js"
+    "dev": "node --env-file-if-exists=.env src/index.js"
   }
 }
 ```
@@ -64,7 +65,7 @@ Node.js には `--env-file-if-exist` というオプションも用意されて�
 
 ## まとめ
 
-Node.js の `--env-file` オプションは .env ファイルが存在しないとエラーになるため、ローカルとクラウドの環境を考慮する場合は `--env-file-if-exist` を利用すると、良さそうです。
+Node.js の `--env-file` オプションは .env ファイルが存在しないとエラーになるため、ローカルとクラウドの環境を考慮する場合は `--env-file-if-exists` を利用すると、良さそうです。
 
 ## 参考
 
